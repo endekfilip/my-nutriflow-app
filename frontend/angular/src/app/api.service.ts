@@ -47,4 +47,8 @@ export class ApiService {
   deleteCalories() {
     return this.http.delete(`${this.baseUrl}/clearCalories`, this.getAuthHeaders());
   }
+
+  deleteCalorieItem(id: string) {
+    return this.http.delete(`${this.baseUrl}/calories/${id}`, this.getAuthHeaders());
+  }
 }

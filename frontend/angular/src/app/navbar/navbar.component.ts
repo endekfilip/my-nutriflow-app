@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FoodService } from '../services/food.service'; // <--- Import FoodService
 
 @Component({
   selector: 'app-navbar',
@@ -8,17 +9,41 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(private router: Router) {}
+  searchTerm: string = '';
+  searchResults: any[] = [];
 
+  constructor(private router: Router, private foodService: FoodService) {}
+
+  // 1. SEARCH FUNCTION
+  searchExternalFood() {
+    if (this.searchTerm.length < 2) return; 
+
+    this.foodService.searchFood(this.searchTerm).subscribe((data: any) => {
+      this.searchResults = data.products || [];
+    });
+  }
+
+  // 2. SELECT FUNCTION (Fixed)
+  selectFood(product: any) {
+    // A. Clear the search bar
+    this.searchTerm = '';
+    this.searchResults = [];
+    
+    // B. Prepare the data
+    const cleanFoodData = {
+      name: product.product_name,
+      calories: product.nutriments['energy-kcal_100g'] || 0
+    };
+
+    // C. Send it to the Home Component! (This updates the Quick Log)
+    this.foodService.updateFood(cleanFoodData);
+  }
+
+  // 3. LOGOUT FUNCTION
   onLogout() {
-    // 1. Remove data from Local Storage
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
-
-    // 2. Alert the user
     alert('Successfully logged out!');
-
-    // 3. Redirect to Home (or Login)
     this.router.navigate(['/login']);
   }
 }

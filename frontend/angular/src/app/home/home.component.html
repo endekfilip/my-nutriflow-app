@@ -45,6 +45,45 @@
       </div>
     </div>
 
+    <div class="feature-card" style="border-top: 4px solid #3498db;">
+      <h3 class="card-title" style="color: #3498db;">🍽️ Quick Log</h3>
+      
+      <div class="mb-3">
+        <label class="d-block text-center text-muted small fw-bold mb-2">Food Item</label>
+        <input 
+          type="text" 
+          [(ngModel)]="quickFoodName" 
+          class="form-control text-center" 
+          placeholder="Search food above to begin..." 
+          style="font-style: italic;">
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+        <div style="flex: 1;">
+          <label class="text-center d-block" style="font-size: 0.9rem; color: #666;">Kcal/100g</label>
+          <input type="number" [(ngModel)]="quickCaloriesPer100g" class="form-control text-center">
+        </div>
+        <div style="flex: 1;">
+          <label class="text-center d-block" style="font-size: 0.9rem; color: #666;">Portion (g)</label>
+          <input type="number" [(ngModel)]="quickGrams" class="form-control text-center">
+        </div>
+      </div>
+
+      <div class="text-center mb-3 p-2" 
+           style="background-color: #f0f8ff; border-radius: 8px; color: #2c3e50;" 
+           *ngIf="quickCaloriesPer100g > 0">
+         <span style="font-size: 0.9rem;">Total:</span> 
+         <strong style="font-size: 1.2rem; color: #3498db;">{{ calculatedCalories }}</strong> cal
+      </div>
+
+      <button class="btn-action" 
+              style="background-color: #3498db; width: 100%;" 
+              [disabled]="!quickFoodName || quickGrams <= 0" 
+              (click)="addQuickFood()">
+        Add to Log
+      </button>
+    </div>
+
     <div class="feature-card">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <h3 class="card-title" style="margin: 0;">🍎 Daily Intake</h3>
@@ -86,13 +125,31 @@
   <div class="modal-content">
     <span class="close-btn" (click)="closeHistory()">&times;</span>
     <h3>🍽️ Food History</h3>
+    
     <ul class="history-list">
-      <li class="history-item" *ngFor="let item of historyList">
-        <span><span class="history-grams">{{ item.grams }}g</span> - {{ item.name || 'Unknown Food' }}</span>
-        <span class="history-cal">+{{ item.totalCalories | number:'1.0-0' }} cal</span>
+      <li class="history-item" *ngFor="let item of historyList" 
+          style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee;">
+        
+        <div>
+           <span style="font-weight: bold; color: #2c3e50;">{{ item.name || 'Unknown' }}</span>
+           <span class="text-muted small ms-2">({{ item.grams }}g)</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+           <span class="badge bg-success rounded-pill">+{{ item.totalCalories | number:'1.0-0' }} cal</span>
+           
+           <button class="btn btn-sm btn-outline-danger border-0" 
+                   (click)="deleteItem(item._id)" 
+                   title="Delete Item"
+                   style="background: transparent;">
+             🗑️
+           </button>
+        </div>
+
       </li>
     </ul>
-    <div *ngIf="historyList.length === 0" class="mt-3 text-muted">No food logged yet.</div>
+
+    <div *ngIf="historyList.length === 0" class="mt-3 text-muted text-center">No food logged yet.</div>
     <button class="btn-action btn-blue mt-3" (click)="closeHistory()">Close</button>
   </div>
 </div>

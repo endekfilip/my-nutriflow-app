@@ -124,6 +124,23 @@ app.delete('/api/clearCalories', authenticateToken, async (req, res) => {
     }
 });
 
+app.delete('/api/calories/:id', authenticateToken, async (req, res) => {
+    try {
+        // We look for an item that matches both the ID provided AND the user's ID
+        // This ensures User A cannot delete User B's food.
+        const result = await Calories.findOneAndDelete({ 
+            _id: req.params.id, 
+            userId: req.user.id 
+        });
+
+        if (!result) return res.status(404).json({ message: 'Item not found or unauthorized' });
+
+        res.json({ message: 'Item deleted successfully' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
