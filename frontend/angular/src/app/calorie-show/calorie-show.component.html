@@ -1,0 +1,9 @@
+<div class="calorie-show">
+  <p class="daily-intake-calorie">Your daily intake calories</p>
+  <form action="">
+    <textarea name="showing-daily-calories" id="textarea-show" cols="50" rows="2">{{ totalCalories }}
+    </textarea>
+    <button type="submit" id="delete-button" class="btn btn-danger" (click)="onDeleteAllCalories()">Delete</button>
+    <button type="button" id="show-button" class="btn btn-primary" (click)="onShowTotalCalories()">Show</button>
+  </form>
+</div>

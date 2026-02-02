@@ -1,0 +1,13 @@
+<div class="item-template">
+  <img src="assets/gyros.jpg" alt="gyros">
+  <p>Gyros</p>
+  <div class="calories-per-100">151 Calories per 100g</div>
+  
+  <div class="input-group">
+    <span class="input-label">Grams:</span>
+    <input type="number" class="input-number-grams" [(ngModel)]="inputValue" placeholder="0">
+    <span class="unit-label">g</span>
+  </div>
+
+  <button class="custom-btn" (click)="onButtonClick()">Enter</button>
+</div>

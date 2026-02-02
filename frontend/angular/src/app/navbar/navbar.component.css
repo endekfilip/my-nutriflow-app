@@ -1,0 +1,23 @@
+/* navbar.component.css */
+
+/* Make the links look good */
+.nav-link {
+  font-size: 1.1rem; /* Clean size */
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8) !important; /* Light grey */
+  transition: color 0.3s ease;
+}
+
+/* Highlight color when hovering */
+.nav-link:hover, .nav-link.active {
+  color: #2ecc71 !important; /* NutriFlow Green */
+}
+
+/* User Icon Styling */
+.fa-circle-user {
+  transition: transform 0.2s;
+}
+
+.fa-circle-user:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+}

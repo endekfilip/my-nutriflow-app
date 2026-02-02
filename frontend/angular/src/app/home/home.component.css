@@ -1,0 +1,248 @@
+/* Main Page Background */
+.home-container {
+  background-color: #f4f6f9; /* Very light grey/blue */
+  min-height: 100vh;
+  padding-bottom: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 1. Hero / Welcome Section */
+.hero-section {
+  background: linear-gradient(135deg, #2c3e50 0%, #000000 100%); /* Dark professional gradient */
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom-left-radius: 50px; /* Stylish curve */
+  border-bottom-right-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #bdc3c7;
+}
+
+/* 2. Grid Layout for Cards */
+.dashboard-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap; /* Responsive on mobile */
+  padding: 0 20px;
+}
+
+/* 3. Card Styling */
+.feature-card {
+  background: white;
+  border-radius: 20px;
+  width: 500px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 5px solid #2ecc71; /* Green accent bar on top */
+}
+
+.feature-card:hover {
+  transform: translateY(-5px); /* Lifts up slightly on hover */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  text-align: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+/* 4. Inputs and Labels */
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+input.form-control, textarea.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input.form-control:focus, textarea.form-control:focus {
+  border-color: #2ecc71; /* Green glow on focus */
+  outline: none;
+}
+
+/* 5. Buttons */
+.btn-action {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-transform: uppercase;
+  color: white;
+}
+
+.btn-green {
+  background-color: #2ecc71;
+}
+
+.btn-green:hover {
+  background-color: #27ae60;
+}
+
+.btn-blue {
+  background-color: #3498db;
+}
+
+.btn-blue:hover {
+  background-color: #2980b9;
+}
+
+.btn-red {
+  background-color: #e74c3c;
+}
+
+.btn-red:hover {
+  background-color: #c0392b;
+}
+
+/* Helper for button row */
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Status Badges */
+.badge {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badge-online {
+  background-color: #2ecc71; /* Green */
+  box-shadow: 0 0 10px #2ecc71; /* Green Glow */
+}
+
+.badge-offline {
+  background-color: #e74c3c; /* Red */
+}
+
+/* Big Number Display */
+.stats-container {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.big-number {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.big-number small {
+  font-size: 1.5rem;
+  color: #95a5a6;
+  font-weight: 400;
+}
+
+/* --- MODAL (POPUP) STYLES --- */
+
+/* The dark background behind the popup */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Stays on top of everything */
+}
+
+/* The white box itself */
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  max-height: 80vh; /* Don't get too tall */
+  overflow-y: auto; /* Scroll if list is long */
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  text-align: center;
+  position: relative;
+}
+
+/* Close Button (X) */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #888;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* List Styling */
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.history-item {
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.history-grams {
+  font-weight: bold;
+  color: #555;
+}
+
+.history-cal {
+  color: #2ecc71; /* Green */
+  font-weight: bold;
+}

@@ -1,0 +1,19 @@
+<div class="calorie-counter">
+  <p class="bmi-calculator">BMI CALCULATOR</p>
+ <div class="height">
+   <label for="height">Height:</label>
+   <input type="number" id="height" placeholder="Enter height(cm)" [(ngModel)]="height">
+ </div>
+  <div class="weight">
+    <label for="weight">Weight:</label>
+    <input type="number" id="weight" placeholder="Enter weight(kg)" [(ngModel)]="weight">
+  </div>
+  <button  id="calculate-bmi" type="button" class="btn btn-success" (click)="calculateBMI()">Calculate BMI</button>
+  <p id="result"></p>
+  <div class="BMI">
+    <p>Your BMI is: {{result}}</p>
+  </div>
+  <div class="BMI-Classification">
+  <p class="classification">Classification: {{result_classification}}</p>
+  </div>
+</div>
