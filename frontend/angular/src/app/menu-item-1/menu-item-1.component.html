@@ -1,0 +1,13 @@
+<div class="item-template">
+  <img src="assets/french-fries.webp" alt="fries">
+  <p>French Fries</p>
+  <div class="calories-per-100">312 Calories per 100g</div>
+  
+  <div class="input-group">
+    <span class="input-label">Grams:</span>
+    <input type="number" class="input-number-grams" [(ngModel)]="inputValue" placeholder="0">
+    <span class="unit-label">g</span>
+  </div>
+
+  <button class="custom-btn" (click)="onButtonClick()">Enter</button>
+</div>

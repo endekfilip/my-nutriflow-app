@@ -1,0 +1,35 @@
+/* GLOBAL LAYOUT CONTROLLER */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* The app always fills the window */
+}
+
+/* This pushes the footer to the bottom */
+router-outlet + * {
+  margin-top: auto; 
+}
+
+/* If you have a wrapper div, this targets it */
+.main-content {
+  flex: 1;
+}
+
+/* --- GLOBAL FOOTER STYLE --- */
+/* This matches your new Elegant Dark Blue Theme */
+footer {
+  background-color: #2c3e50; /* Dark Blue */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  width: 100%;
+  margin-top: auto; /* Vital for sticky footer */
+}
+
+footer strong {
+  font-weight: 700;
+  color: #bdc3c7; /* Light grey accent */
+}

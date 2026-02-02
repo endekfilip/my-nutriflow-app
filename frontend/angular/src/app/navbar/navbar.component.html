@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid px-4">
+    
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+      </svg>
+      <span class="fw-bold" style="letter-spacing: 1px; color: white;">NutriFlow</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      
+      <ul class="navbar-nav ms-4 me-auto mb-2 mb-lg-0 gap-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu" routerLinkActive="active">MENU</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">ABOUT</a>
+        </li>
+      </ul>
+
+      <div class="d-flex position-relative mx-3">
+        <input 
+          class="form-control" 
+          type="search" 
+          placeholder="🔍 Search food..." 
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="searchExternalFood()"
+          style="background-color: #343a40; border: 1px solid #495057; color: white; width: 250px;">
+        
+        <ul class="list-group position-absolute w-100" 
+            style="top: 100%; z-index: 1050; max-height: 300px; overflow-y: auto; margin-top: 5px;" 
+            *ngIf="searchResults.length > 0">
+          
+          <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+              *ngFor="let item of searchResults"
+              (click)="selectFood(item)"
+              style="cursor: pointer;">
+            <span class="text-truncate" style="max-width: 140px; font-size: 0.9rem;">{{ item.product_name }}</span>
+            <span class="badge bg-success rounded-pill">{{ item.nutriments['energy-kcal_100g'] || 0 }}</span>
+          </li>
+          
+          <li class="list-group-item text-center text-danger small py-1" 
+              (click)="searchResults = []" style="cursor: pointer; font-weight: bold;">
+            Close
+          </li>
+        </ul>
+      </div>
+
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+             <i class="fa-solid fa-circle-user" style="font-size: 1.8rem; color: #2ecc71;"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" style="right: 0; left: auto;">
+            <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+            <li><a class="dropdown-item" routerLink="/register">Register</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item text-danger" href="javascript:void(0)" (click)="onLogout()">
+                <i class="fa-solid fa-power-off"></i> Logout
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

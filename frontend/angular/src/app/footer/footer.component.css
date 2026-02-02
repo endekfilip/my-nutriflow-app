@@ -1,0 +1,28 @@
+.footer{
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  margin-top: -100px;
+  clear: both;
+  color: #ffff;
+}
+.copyright{
+  color: #ffff;
+  width: 50%;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+}
+.david-logo-github{
+  width: 35px;
+  position: relative;
+  bottom: 3px;
+  height: 35px;
+}
+.simeon-logo-github{
+  width: 35px;
+  position: relative;
+  bottom: 3px;
+  height: 35px;
+}
